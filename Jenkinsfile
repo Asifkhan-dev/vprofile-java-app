@@ -7,7 +7,7 @@ pipeline {
     }
 */
     environment {
-        registry = "imranvisualpath/vproappdock"
+        registry = "asiffkhan555/vprofile-java-app"
         registryCredential = 'dockerhub'
     }
 
@@ -74,16 +74,16 @@ pipeline {
           }
         }
 
-        stage('CODE ANALYSIS with SONARQUBE') {
+       /* stage('CODE ANALYSIS with SONARQUBE') {
 
             environment {
                 scannerHome = tool 'mysonarscanner4'
             }
 
             steps {
-                withSonarQubeEnv('sonar-pro') {
-                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile \
-                   -Dsonar.projectName=vprofile-repo \
+                withSonarQubeEnv('jenkins-sonar-integration') {
+                    sh '''${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=vprofile-projects-scan \
+                   -Dsonar.projectName=vprofile-scan-analysis \
                    -Dsonar.projectVersion=1.0 \
                    -Dsonar.sources=src/ \
                    -Dsonar.java.binaries=target/test-classes/com/visualpathit/account/controllerTest/ \
@@ -96,13 +96,13 @@ pipeline {
                     waitForQualityGate abortPipeline: true
                 }
             }
-        }
-        stage('Kubernetes Deploy') {
+        }*/
+        /*stage('Kubernetes Deploy') {
 	      agent { label 'KOPS' }
             steps {
                     sh "helm upgrade --install --force vproifle-stack helm/vprofilecharts --set appimage=${registry}:${BUILD_NUMBER} --namespace prod"
             }
-        }
+        }*/
 
     }
 
