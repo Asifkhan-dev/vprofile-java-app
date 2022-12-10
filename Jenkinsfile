@@ -25,13 +25,13 @@ pipeline {
             }
         }
 
-        /*stage('UNIT TEST'){
+        stage('UNIT TEST'){
             steps {
-                sh 'mvn test'
+                sh 'mvn clean test'
             }
         }
 
-        stage('INTEGRATION TEST'){
+        /*stage('INTEGRATION TEST'){
             steps {
                 sh 'mvn verify -DskipUnitTests'
             }
@@ -49,7 +49,7 @@ pipeline {
         }*/
 
 
-        stage('Building image') {
+        /*stage('Building image') {
             steps{
               script {
                 dockerImage = docker.build registry + ":$BUILD_NUMBER"
@@ -72,7 +72,7 @@ pipeline {
           steps{
             sh "docker rmi $registry:$BUILD_NUMBER"
           }
-        }
+        }*/
 
        /* stage('CODE ANALYSIS with SONARQUBE') {
 
